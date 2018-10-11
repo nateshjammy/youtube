@@ -34,8 +34,6 @@ public class Myadapter extends RecyclerView.Adapter<Myadapter.MyViewHolder> {
         holder.nName.setText(mypojo.getItems().get(position).getSnippet().getTopLevelComment().getSnippet().getTextDisplay());
         holder.NLEmailID.setText(mypojo.getItems().get(position).getSnippet().getTopLevelComment().getSnippet().getPublishedAt());
 
-
-
     }
 
 
