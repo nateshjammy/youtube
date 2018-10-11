@@ -13,8 +13,8 @@ import salesnotification.honda.tansi.com.youtube.R;
 
 public class Myadapter extends RecyclerView.Adapter<Myadapter.MyViewHolder> {
 
-    private ManiPOJO mypojo;
-    public Myadapter(ManiPOJO list){
+    private Mypojo mypojo;
+    public Myadapter(Mypojo list){
 
         this.mypojo=list;
     }
@@ -32,7 +32,8 @@ public class Myadapter extends RecyclerView.Adapter<Myadapter.MyViewHolder> {
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position ) {
 
         holder.nName.setText(mypojo.getItems().get(position).getSnippet().getTopLevelComment().getSnippet().getTextDisplay());
-        holder.NLEmailID.setText(mypojo.getItems().get(position).getSnippet().getTopLevelComment().getSnippet().getUpdatedAt());
+        holder.NLEmailID.setText(mypojo.getItems().get(position).getSnippet().getTopLevelComment().getSnippet().getPublishedAt());
+
 
 
     }

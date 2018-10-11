@@ -15,15 +15,11 @@ import com.google.android.youtube.player.YouTubePlayer;
 import com.google.android.youtube.player.YouTubePlayer.Provider;
 import com.google.android.youtube.player.YouTubePlayerView;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import salesnotification.honda.tansi.com.youtube.Retrofit.ApiClient;
 import salesnotification.honda.tansi.com.youtube.Retrofit.ApiInterface;
-import salesnotification.honda.tansi.com.youtube.Retrofit.Pojo.ManiPOJO;
 import salesnotification.honda.tansi.com.youtube.Retrofit.Pojo.Myadapter;
 import salesnotification.honda.tansi.com.youtube.Retrofit.Pojo.Mypojo;
 
@@ -38,7 +34,7 @@ public class MainActivity extends YouTubeBaseActivity implements YouTubePlayer.O
     Myadapter myadapter;
     private ApiInterface apiInterface;
     private RecyclerView recyclerView;
-    ManiPOJO mypojo;
+    Mypojo mypojo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -174,24 +170,23 @@ public class MainActivity extends YouTubeBaseActivity implements YouTubePlayer.O
     }
 
     private void getpaserr() {
-        Map<String, String> requestBody = new HashMap<>();
-        requestBody.put("key", "AIzaSyAKaIDCwGIo-p2JzOSQYm0Oz7lJvLS6Yjw");
-        requestBody.put("textFormat", "plainText");
-        requestBody.put("part", "snippet");
-        requestBody.put("videoId", "fA2B_sOgAAM");
-        requestBody.put("maxResults", "50");
 
+
+        String key  = "AIzaSyAKaIDCwGIo-p2JzOSQYm0Oz7lJvLS6Yjw";
+        String videoId  = "fA2B_sOgAAM";
+        String textFormat = "plainText";
+        String part = "snippet";
+        String maxResults = "50";
 
         apiInterface = ApiClient.getClient().create(ApiInterface.class);
 
-        apiInterface.getEnquiryList().enqueue(new Callback<ManiPOJO>() {
+        apiInterface.getEnquiryList(key,textFormat,part,videoId,maxResults).enqueue(new Callback<Mypojo>() {
             @Override
-            public void onResponse(Call<ManiPOJO> call, Response<ManiPOJO> response) {
+            public void onResponse(Call<Mypojo> call, Response<Mypojo> response) {
                 try {
 
                     mypojo =  response.body();
                     myadapter= new Myadapter(mypojo);
-                    Toast.makeText(MainActivity.this, mypojo.toString(), Toast.LENGTH_SHORT).show();
                     LinearLayoutManager llm = new LinearLayoutManager(MainActivity.this);
                     llm.setOrientation(LinearLayoutManager.VERTICAL);
                     recyclerView.setLayoutManager(llm);
@@ -205,7 +200,7 @@ public class MainActivity extends YouTubeBaseActivity implements YouTubePlayer.O
 
 
             @Override
-            public void onFailure(Call<ManiPOJO> call, Throwable t) {
+            public void onFailure(Call<Mypojo> call, Throwable t) {
 
                 Toast.makeText(MainActivity.this,"Unable to connect server"+ t.getLocalizedMessage(),Toast.LENGTH_LONG).show();
 
