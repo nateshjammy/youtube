@@ -41,7 +41,6 @@ public class Myadapter extends RecyclerView.Adapter<Myadapter.MyViewHolder> {
 
     @Override
     public int getItemCount() {
-       //return mypojo.getPageInfo().get(0).details.get(0).data.size();
         return mypojo.getItems().size();
     }
 
