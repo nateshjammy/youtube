@@ -9,6 +9,9 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+
 import salesnotification.honda.tansi.com.youtube.R;
 
 public class Myadapter extends RecyclerView.Adapter<Myadapter.MyViewHolder> {
@@ -33,6 +36,8 @@ public class Myadapter extends RecyclerView.Adapter<Myadapter.MyViewHolder> {
 
         holder.nName.setText(mypojo.getItems().get(position).getSnippet().getTopLevelComment().getSnippet().getTextDisplay());
         holder.NLEmailID.setText(mypojo.getItems().get(position).getSnippet().getTopLevelComment().getSnippet().getPublishedAt());
+
+
 
     }
 

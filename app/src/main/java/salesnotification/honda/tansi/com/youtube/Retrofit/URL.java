@@ -4,5 +4,6 @@ public class URL {
 
   // public static final String MYURL = "commentThreads?key=AIzaSyAKaIDCwGIo-p2JzOSQYm0Oz7lJvLS6Yjw&textFormat=plainText&part=snippet&videoId=fA2B_sOgAAM&maxResults=50";
     public static final String MYURL = "commentThreads";
+    public static final String PLAYLIST = "activities";
 
 }
